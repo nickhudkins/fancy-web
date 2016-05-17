@@ -1,0 +1,13 @@
+{
+  "javascript": {
+    "main": "http://localhost:5001/dist/bundle.js",
+    "common.js": "http://localhost:5001/dist/common.js"
+  },
+  "styles": {},
+  "assets": {
+    "./src/lib/containers/Home/Home.scss": {
+      "title": "title___39cFB",
+      "_style": ".title___39cFB {\n  color: orange;\n}\n"
+    }
+  }
+}
