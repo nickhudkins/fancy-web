@@ -1,11 +1,13 @@
 import 'babel-polyfill';
 import express from 'express';
 
-// import config from '../config.json';
+//import config from '../config.json';
 import errorHandler from './middlewares/errorHandler';
 import logger from './utils/logger';
 import graphql from './middlewares/graphql';
 import cors from 'cors';
+
+global.Promise = require('../../common/configureBluebird');
 
 const app = express();
 

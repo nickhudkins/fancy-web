@@ -1,3 +1,7 @@
+import 'babel-polyfill';
+global.Promise = require('../../../common/configureBluebird');
+import './errorHandler';
+
 import React from 'react';
 import { render } from 'react-dom';
 import Relay from 'react-relay';
