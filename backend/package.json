@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "babel src -d dist",
-    "postinstall": "npm run update-schema && npm run build",
+    "prebuild": "npm run update-schema",
     "start": "node ./dist",
     "start:dev": "NODE_ENV=development heroku local",
     "update-schema": "babel-node scripts/updateSchema.js",
