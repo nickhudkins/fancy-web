@@ -11,21 +11,38 @@ const isoToolsPlugin = new IsoToolsPlugin(isoToolsConfig);
 
 const config = require('../config');
 
+const vendorList = [
+  'react',
+  'react-dom',
+  'bluebird',
+  'lodash',
+  'react-router',
+  'react-router-relay',
+  'isomorphic-relay',
+  'isomorphic-relay-router',
+];
+
 module.exports = {
   devtool: 'source-map',
-  entry: [
-    './src/client/entry',
-  ],
+  entry: {
+    app: [
+      './src/client/entry',
+    ],
+    vendor: vendorList,
+  },
   context: config.rootDir,
   output: {
     path: config.assetsPath,
-    filename: '[name]-[hash].bundle.js',
+    filename: '[name]-[chunkhash].bundle.js',
     publicPath: '/static/',
   },
   plugins: [
     new CleanPlugin([config.assetsPath], { root: config.rootDir }),
     new ExtractTextPlugin('[name]-[chunkhash].css', { allChunks: true }),
-    new webpack.optimize.CommonsChunkPlugin('common.js'),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: 'vendor',
+      minChunks: 2,
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {

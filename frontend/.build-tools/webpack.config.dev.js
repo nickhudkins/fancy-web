@@ -8,19 +8,31 @@ const config = require('../config');
 const host = config.host || 'localhost';
 const port = (Number(config.port) + 1) || 3001;
 
+const vendorList = [
+  'react',
+  'react-dom',
+  'bluebird',
+  'lodash',
+  'react-router',
+  'react-router-relay',
+  'isomorphic-relay',
+  'isomorphic-relay-router',
+];
+
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   context: config.rootDir,
-  entry: [
-    // necessary for hot reloading with IE:
-    'eventsource-polyfill',
-    // listen to code updates emitted by hot middleware:
-    `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr`,
-    './src/client/entry',
-  ],
+  entry: {
+    app: [
+      'eventsource-polyfill',
+      `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr`,
+      './src/client/entry',
+    ],
+    vendor: vendorList,
+  },
   output: {
     path: config.assetsPath,
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     publicPath: `http://${host}:${port}/static/`,
   },
   resolve: {
@@ -48,7 +60,10 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.CommonsChunkPlugin('common.js'),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: 'vendor',
+      minChunks: 2,
+    }),
     new webpack.IgnorePlugin(/webpack-stats\.json/),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({

@@ -25,7 +25,7 @@ export const Page = ({ data, markup = '', assets, head }) => {
       <head>
         { head && head.title.toComponent() }
         { head && head.meta.toComponent() }
-        { isProduction && <link rel="stylesheet" href={ assets.styles.main }></link> }
+        { isProduction && <link rel="stylesheet" href={ assets.styles.app }></link> }
         <script dangerouslySetInnerHTML={{ __html: pageConfig(config) }}></script>
         { analytics }
       </head>
@@ -39,8 +39,8 @@ export const Page = ({ data, markup = '', assets, head }) => {
           ></script>
         }
         <script src="https://cdn.ravenjs.com/3.0.4/raven.min.js"></script>
-        <script src={assets.javascript['common.js']}></script>
-        <script src={assets.javascript.main}></script>
+        <script src={assets.javascript.vendor}></script>
+        <script src={assets.javascript.app}></script>
       </body>
     </html>
   );
