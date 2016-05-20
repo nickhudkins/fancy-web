@@ -1,4 +1,4 @@
-{
+module.exports = {
   "defaultTitle": "Home",
   "titleTemplate": "%s | MySite",
   "meta": [

@@ -1,13 +1,1 @@
-{
-  "javascript": {
-    "main": "http://localhost:5001/dist/bundle.js",
-    "common.js": "http://localhost:5001/dist/common.js"
-  },
-  "styles": {},
-  "assets": {
-    "./src/lib/containers/Home/Home.scss": {
-      "title": "title___39cFB",
-      "_style": ".title___39cFB {\n  color: orange;\n}\n"
-    }
-  }
-}
+{"javascript":{"common.js":"/static/common.js","main":"/static/main-dc69a988bf07e738bfde.bundle.js"},"styles":{"main":"/static/main-e165a3bf472c7cb730e2.css"},"assets":{"./src/lib/containers/Home/Home.scss":{"title":"_39cFBCzfecOwIQ4I780ih-"}}}

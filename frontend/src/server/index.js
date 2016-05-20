@@ -1,10 +1,9 @@
 /* globals webpackIsomorphicTools */
-import path from 'path';
 import React from 'react';
 import Helmet from 'react-helmet';
 import express from 'express';
 
-global.Promise = require('../../../common/configureBluebird');
+global.Promise = require('../lib/utils/configureBluebird');
 
 import Relay from 'react-relay';
 import IsomorphicRelayRouter from 'isomorphic-relay-router';
@@ -18,14 +17,11 @@ const { host, port, googleAnalyticsId } = config;
 
 const app = express();
 
-const ASSETS_DIR = path.join(__dirname, '..', '..', 'dist');
-
-app.use('/static', express.static(ASSETS_DIR));
+app.use('/static', express.static(config.assetsPath));
 
 const redirect = (loc, res) => {
   res.redirect(loc);
 };
-
 
 const writeNotFound = (res) => {
   res.send('404');
@@ -48,7 +44,7 @@ app.get('*', (req, res, next) => {
           const page = renderToString(
             <Page {...{ assets, markup, googleAnalyticsId, head, data }} />
           );
-          res.send(page);
+          res.send(`<!DOCTYPE html>${page}`);
         };
         IsomorphicRelayRouter.prepareData(renderProps, networkLayer).then(renderApp, next);
       } else {

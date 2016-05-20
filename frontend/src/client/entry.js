@@ -1,5 +1,5 @@
 import 'babel-polyfill';
-global.Promise = require('../../../common/configureBluebird');
+window.Promise = require('../lib/utils/configureBluebird');
 import './errorHandler';
 
 import React from 'react';

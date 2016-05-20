@@ -31,6 +31,7 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
         API_ENDPOINT: JSON.stringify(config.apiEndpoint),
+        APP_VERSION: JSON.stringify(config.appVersion)
       },
     }),
     isoToolsPlugin,
@@ -50,7 +51,7 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: [strip.loader('debug', 'console.log'), 'babel'],
+      loaders: [strip.loader('debug'), 'babel'],
       exclude: /node_modules/,
     },
     { test: /\.json$/, loader: 'json-loader' },

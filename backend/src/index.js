@@ -1,13 +1,10 @@
 import 'babel-polyfill';
 import express from 'express';
 
-//import config from '../config.json';
 import errorHandler from './middlewares/errorHandler';
 import logger from './utils/logger';
 import graphql from './middlewares/graphql';
 import cors from 'cors';
-
-global.Promise = require('../../common/configureBluebird');
 
 const app = express();
 
@@ -16,7 +13,9 @@ app.use('/graphql', graphql);
 app.use('/status', (req, res) => res.json({ status: 'ok' }));
 app.use(errorHandler);
 
-const server = app.listen(3003, err => {
+const PORT = process.env.PORT || 3003;
+
+const server = app.listen(PORT, err => {
   if (err) {
     logger.error(err);
   } else {

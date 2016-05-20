@@ -22,7 +22,5 @@
     "start:frontend": "cd frontend && npm start",
     "dev:start:frontend": "cd frontend && npm run start:dev"
   },
-  "dependencies": {
-
-  }
+  "dependencies": {}
 }

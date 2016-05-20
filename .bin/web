@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "========================================================="
+echo "-----> Attempting to run the ${RUNTIME_SERVICE} service."
+echo "========================================================="
+echo ""
+
+if [ "${RUNTIME_SERVICE}" == "web" ]; then
+  npm run start:frontend
+elif [ "${RUNTIME_SERVICE}" == "api" ]; then
+  npm run start:backend
+else
+  echo "     ERROR: Unknown RUNTIME_SERVICE value ('${RUNTIME_SERVICE}'). Please choose 'web' or 'api'."
+  exit 1
+fi

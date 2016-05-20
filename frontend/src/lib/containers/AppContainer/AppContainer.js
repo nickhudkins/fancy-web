@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import metaProps from 'siteHead.json';
+import metaProps from 'siteHead.js';
 
 export default class AppContainer extends Component { //eslint-disable-line
 

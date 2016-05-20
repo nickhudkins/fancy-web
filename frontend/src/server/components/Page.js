@@ -30,8 +30,9 @@ export const Page = ({ data, googleAnalyticsId, markup = '', assets, head }) => 
             dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/\//g, '\\/') }}
           ></script>
         }
-        <script src={assets.javascript['common.js']}></script>
-        <script src={assets.javascript.main}></script>
+        <script src="https://cdn.ravenjs.com/3.0.4/raven.min.js"></script>
+        <script src={assets.javascript['common.js']} crossorigin="anonymous"></script>
+        <script src={assets.javascript.main} crossorigin="anonymous"></script>
       </body>
     </html>
   );

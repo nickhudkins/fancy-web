@@ -1,21 +1,14 @@
 {
+  "name": "fancy-web-frontend",
+  "version": "2.0.0",
   "private": true,
   "devDependencies": {
     "assets-webpack-plugin": "^3.4.0",
     "autoprefixer-loader": "^3.2.0",
     "babel-cli": "^6.3.17",
-    "babel-core": "^6.3.26",
     "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.4",
-    "babel-plugin-react-transform": "2.0.2",
-    "babel-plugin-transform-runtime": "^6.3.13",
-    "babel-polyfill": "6.9.0",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "1.1.1",
-    "babel-preset-stage-0": "^6.3.13",
-    "babel-relay-plugin": "0.8.0",
-    "babel-relay-plugin-loader": "0.8.1",
     "clean-webpack-plugin": "^0.1.8",
     "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
@@ -26,6 +19,9 @@
     "eslint-plugin-react": "^4.2.3",
     "eventsource-polyfill": "^0.9.6",
     "extract-text-webpack-plugin": "^1.0.1",
+    "gulp": "3.9.1",
+    "gulp-sentry-release": "1.0.2",
+    "gulp-util": "3.0.7",
     "json-loader": "^0.5.4",
     "node-sass": "^3.4.2",
     "parallelshell": "^2.0.0",
@@ -40,6 +36,16 @@
     "webpack-hot-middleware": "^2.9.1"
   },
   "dependencies": {
+    "babel-core": "^6.3.26",
+    "babel-plugin-react-transform": "2.0.2",
+    "babel-plugin-transform-runtime": "^6.3.13",
+    "babel-polyfill": "6.9.0",
+    "babel-preset-stage-0": "^6.3.13",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-relay-plugin": "0.8.0",
+    "babel-relay-plugin-loader": "0.8.1",
+    "babel-preset-stage-0": "^6.3.13",
     "classnames": "^2.2.3",
     "express": "^4.13.3",
     "isomorphic-relay": "^0.7.0-beta.0",
@@ -53,12 +59,15 @@
     "webpack-isomorphic-tools": "^2.2.43"
   },
   "scripts": {
-    "build:webpack": "cross-env NODE_ENV=production webpack --config .build-tools/webpack.config.prod.js",
-    "build": "npm run build:webpack",
-    "start": "heroku local",
+    "build": "cross-env NODE_ENV=production webpack --config .build-tools/webpack.config.prod.js",
+    "start": "node bin/server.js",
     "start:dev": "parallelshell 'npm run dev' 'npm run watch'",
     "dev": "cross-env NODE_PATH=./src NODE_ENV='development' node bin/server.js",
-    "watch": "cross-env NODE_ENV='development' node .build-tools/webpack-dev-server.js"
+    "watch": "cross-env NODE_ENV='development' node .build-tools/webpack-dev-server.js",
+    "release:patch": "npm version patch && npm run release",
+    "release:minor": "npm version minor && npm run release",
+    "release:major": "npm version major && npm run release",
+    "release": "npm run build && gulp --gulpfile ./.build-tools/gulpfile.js sentry:release"
   },
   "metadata": {
     "graphql": {
