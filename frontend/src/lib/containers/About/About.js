@@ -5,21 +5,21 @@ class About extends Component {
   componentDidMount() {
     setTimeout(() => {
       const baz = () => {
-        throw new Error('FUCK_STICKS');
-      }
+        throw new Error('TEST_EXCEPTION');
+      };
       const bar = () => {
         baz();
-      }
+      };
       const foo = () => {
         bar();
-      }
+      };
       foo();
     }, 1000);
   }
 
   render() {
     return (
-      <div>{ this.props.viewer.totalCount } sadfafsdsf</div>
+      <div>Relay DATA: { this.props.viewer.totalCount }</div>
     );
   }
 }

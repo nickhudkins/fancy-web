@@ -1,7 +1,8 @@
+/* globals __API_ENDPOINT__ */
 import 'babel-polyfill';
 window.Promise = require('../lib/utils/configureBluebird');
-import './errorHandler';
 
+import './errorHandler';
 import React from 'react';
 import { render } from 'react-dom';
 import Relay from 'react-relay';
@@ -12,7 +13,7 @@ import routes from 'routes';
 
 const environment = new Relay.Environment();
 environment.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer(process.env.API_ENDPOINT)
+  new Relay.DefaultNetworkLayer(__API_ENDPOINT__)
 );
 
 if (process.env.NODE_ENV === 'production') {

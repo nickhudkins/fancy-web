@@ -9,7 +9,6 @@ const host = config.host || 'localhost';
 const port = (Number(config.port) + 1) || 3001;
 
 module.exports = {
-  // or devtool: 'eval' to debug issues with compiled output:
   devtool: 'cheap-module-eval-source-map',
   context: config.rootDir,
   entry: [
@@ -22,7 +21,7 @@ module.exports = {
   output: {
     path: config.assetsPath,
     filename: 'bundle.js',
-    publicPath: `http://${host}:${port}/dist/`,
+    publicPath: `http://${host}:${port}/static/`,
   },
   resolve: {
     extensions: ['', '.json', '.js'],
@@ -32,9 +31,13 @@ module.exports = {
     ],
   },
   module: {
+    preLoaders: [{
+      test: /\.js$/, loader: 'eslint-loader',
+      exclude: /node_modules/,
+    }],
     loaders: [{
       test: /\.js$/,
-      loader: 'babel?presets[]=react-hmre',
+      loaders: ['babel?presets[]=react-hmre'],
       exclude: /node_modules/,
     },
     { test: /\.json$/, loader: 'json-loader' },
@@ -51,7 +54,6 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
-        API_ENDPOINT: JSON.stringify(config.apiEndpoint),
       },
     }),
     isoToolsPlugin.development(),

@@ -30,8 +30,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
-        API_ENDPOINT: JSON.stringify(config.apiEndpoint),
-        APP_VERSION: JSON.stringify(config.appVersion)
+        APP_VERSION: JSON.stringify(config.appVersion),
       },
     }),
     isoToolsPlugin,

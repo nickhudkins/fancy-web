@@ -1,6 +1,6 @@
 {
   "name": "fancy-web-frontend",
-  "version": "2.0.0",
+  "version": "0.2.0",
   "private": true,
   "devDependencies": {
     "assets-webpack-plugin": "^3.4.0",
@@ -10,7 +10,7 @@
     "babel-loader": "^6.2.4",
     "babel-preset-react-hmre": "1.1.1",
     "clean-webpack-plugin": "^0.1.8",
-    "cross-env": "^1.0.7",
+    "concurrently": "2.1.0",
     "css-loader": "^0.23.1",
     "eslint": "^2.5.3",
     "eslint-config-airbnb": "^6.2.0",
@@ -25,6 +25,7 @@
     "json-loader": "^0.5.4",
     "node-sass": "^3.4.2",
     "parallelshell": "^2.0.0",
+    "react-hot-loader": "3.0.0-beta.1",
     "react-transform-catch-errors": "1.0.2",
     "redbox-react": "^1.2.4",
     "rimraf": "^2.4.3",
@@ -33,6 +34,7 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
+    "webpack-dev-server": "1.14.1",
     "webpack-hot-middleware": "^2.9.1"
   },
   "dependencies": {
@@ -60,11 +62,11 @@
     "webpack-isomorphic-tools": "^2.2.43"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config .build-tools/webpack.config.prod.js",
-    "start": "node bin/server.js",
-    "start:dev": "parallelshell 'npm run dev' 'npm run watch'",
-    "dev": "cross-env NODE_PATH=./src NODE_ENV='development' node bin/server.js",
-    "watch": "cross-env NODE_ENV='development' node .build-tools/webpack-dev-server.js",
+    "build": "NODE_ENV=production webpack --config .build-tools/webpack.config.prod.js",
+    "start": "NODE_PATH=./src NODE_ENV=production node bin/server.js",
+    "start:dev": "concurrently --kill-others 'npm run dev' 'npm run watch'",
+    "dev": "NODE_PATH=./src NODE_ENV='development' node bin/server.js",
+    "watch": "NODE_ENV='development' node .build-tools/webpack-dev-server.js",
     "release:patch": "npm version patch && npm run release",
     "release:minor": "npm version minor && npm run release",
     "release:major": "npm version major && npm run release",
