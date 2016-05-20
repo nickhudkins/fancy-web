@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///webpack:///src/lib/containers/Home/src/lib/src/lib/containers/Home/Home.scss"],"names":[],"mappings":"AAAA,yBACE,YAAc","file":"app.css","sourcesContent":[".title {\n  color: orange;\n}\n\n\n\n/** WEBPACK FOOTER **\n ** webpack:///src/lib/containers/Home/src/lib/src/lib/containers/Home/Home.scss\n **/"],"sourceRoot":""}

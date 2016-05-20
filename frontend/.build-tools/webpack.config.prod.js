@@ -33,12 +33,12 @@ module.exports = {
   context: config.rootDir,
   output: {
     path: config.assetsPath,
-    filename: '[name]-[chunkhash].bundle.js',
+    filename: '[name].bundle.js',
     publicPath: '/static/',
   },
   plugins: [
     new CleanPlugin([config.assetsPath], { root: config.rootDir }),
-    new ExtractTextPlugin('[name]-[chunkhash].css', { allChunks: true }),
+    new ExtractTextPlugin('[name].css', { allChunks: true }),
     new webpack.optimize.CommonsChunkPlugin({
       names: 'vendor',
       minChunks: 2,
