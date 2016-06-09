@@ -40,7 +40,7 @@ module.exports = {
     new CleanPlugin([config.assetsPath], { root: config.rootDir }),
     new ExtractTextPlugin('[name].css', { allChunks: true }),
     new webpack.optimize.CommonsChunkPlugin({
-      names: 'vendor',
+      names: 'common',
       minChunks: 2,
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),

@@ -12,6 +12,7 @@ export default class AppContainer extends Component { //eslint-disable-line
     const { children } = this.props;
     return (
       <div>
+        <h1>Hello World</h1>
         <Helmet {...metaProps } />
         { children }
       </div>
