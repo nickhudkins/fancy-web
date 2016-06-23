@@ -13,11 +13,12 @@
     "build": "babel src -d dist",
     "prebuild": "npm run update-schema",
     "start": "node ./dist",
-    "start:dev": "NODE_ENV=development heroku local",
+    "start:dev": "NODE_ENV=development heroku local --port 3003",
     "update-schema": "babel-node scripts/updateSchema.js",
     "watch": "nodemon --watch src --exec 'npm run start:dev'"
   },
   "devDependencies": {
+    "babel-cli": "6.10.1",
     "nodemon": "1.9.2"
   }
 }

@@ -2,20 +2,6 @@ import React, { Component } from 'react';
 import Relay from 'react-relay';
 
 class About extends Component {
-  componentDidMount() {
-    setTimeout(() => {
-      const baz = () => {
-        throw new Error('TEST_EXCEPTION');
-      };
-      const bar = () => {
-        baz();
-      };
-      const foo = () => {
-        bar();
-      };
-      foo();
-    }, 1000);
-  }
 
   render() {
     return (
