@@ -1,11 +1,3 @@
 {
-  "extends": "airbnb",
-  "parser": "babel-eslint",
-  "rules": {
-    "arrow-body-style": 0,
-    "no-unused-vars": 1,
-    "camelcase": 1,
-    "react/prefer-stateless-function": 0,
-    "react/prop-types": 0
-  }
+  "extends": "chalkdust",
 }

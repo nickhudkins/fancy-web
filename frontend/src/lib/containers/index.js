@@ -1,2 +1,2 @@
-export AppContainer from './AppContainer/AppContainer';
-export NotFound from './NotFound/NotFound';
+export { default as AppContainer } from './AppContainer/AppContainer';
+export { default as NotFound } from './NotFound/NotFound';

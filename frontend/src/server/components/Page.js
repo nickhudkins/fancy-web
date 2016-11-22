@@ -20,13 +20,14 @@ export const Page = ({ data, markup = '', assets, head }) => {
   const analytics = isProduction && config.googleAnalyticsId !== 'UA-XXXXXXX-X' && (
     <script dangerouslySetInnerHTML={{ __html: analyticsSnippet(config) }} />
   );
+  console.log(assets.style)
   return (
     <html lang="en">
       <head>
         { head && head.title.toComponent() }
         { head && head.meta.toComponent() }
-        { isProduction && <link rel="stylesheet" href={ assets.styles.app }></link> }
         <script dangerouslySetInnerHTML={{ __html: pageConfig(config) }}></script>
+        { assets.style && <style dangerouslySetInnerHTML={{ __html: assets.style }}></style> }
         { analytics }
       </head>
       <body>

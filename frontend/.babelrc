@@ -1,19 +1,17 @@
 {
   "presets": [
-    "es2015",
-    "stage-0",
+    "latest",
     "react"
   ],
-  "env": {
-    "development": {
-      "plugins": [
-        "babel-relay-plugin-loader"
-      ]
-    },
-    "production": {
-      "plugins": [
-        "babel-relay-plugin-loader"
-      ]
-    }
-  }
+  "plugins": [
+    "babel-relay-plugin-loader",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    ["transform-regenerator", { "async": false }],
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true
+    }],
+  ]
 }

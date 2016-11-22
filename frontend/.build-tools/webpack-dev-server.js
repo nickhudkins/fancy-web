@@ -11,7 +11,7 @@ const port = (Number(config.port) + 1) || 3001;
 const serverOptions = {
   contentBase: `http://${host}:${port}`,
   quiet: true,
-  noInfo: true,
+  noInfo: false,
   hot: true,
   inline: true,
   lazy: false,

@@ -1,13 +1,11 @@
 {
   "private": true,
   "devDependencies": {
-    "eslint": "~2.10.2",
-    "eslint-config-airbnb": "~6.2.0",
-    "eslint-plugin-react": "~4.2.3"
+    "babel-core": "6.18.2",
+    "chalkdust": "1.1.0",
   },
   "engines": {
-    "node": "~4.2.4",
-    "npm": "~3.7.5"
+    "node": "7.1.0"
   },
   "scripts": {
     "build:backend": "cd backend && npm run build",

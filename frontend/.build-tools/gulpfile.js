@@ -13,7 +13,6 @@ const config = require('../config');
 const SENTRY_ORG_NAME = process.env.SENTRY_ORG_NAME;
 const SENTRY_PROJECT_NAME = process.env.SENTRY_PROJECT_NAME;
 const SENTRY_API_KEY = process.env.SENTRY_API_KEY;
-console.log(SENTRY_API_KEY)
 
 const opt = {
   API_URL: `https://app.getsentry.com/api/0/projects/${SENTRY_ORG_NAME}/${SENTRY_PROJECT_NAME}/`,

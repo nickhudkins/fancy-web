@@ -5,10 +5,6 @@ const strip = require('strip-loader');
 
 const webpack = require('webpack');
 
-const IsoToolsPlugin = require('webpack-isomorphic-tools/plugin');
-const isoToolsConfig = require('./webpack-isomorphic-tools.js');
-const isoToolsPlugin = new IsoToolsPlugin(isoToolsConfig);
-
 const config = require('../config');
 
 const vendorList = [
@@ -38,7 +34,7 @@ module.exports = {
   },
   plugins: [
     new CleanPlugin([config.assetsPath], { root: config.rootDir }),
-    new ExtractTextPlugin('[name].css', { allChunks: true }),
+    new ExtractTextPlugin({ filename: '[name].css', allChunks: true }),
     new webpack.optimize.CommonsChunkPlugin({
       names: 'vendor',
       minChunks: 2,
@@ -50,7 +46,6 @@ module.exports = {
         APP_VERSION: JSON.stringify(config.appVersion),
       },
     }),
-    isoToolsPlugin,
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
@@ -58,8 +53,8 @@ module.exports = {
     }),
   ],
   resolve: {
-    extends: ['', '.js', '.jsx', '.json'],
-    modulesDirectories: [
+    extensions: ['.js', '.jsx', '.json'],
+    modules: [
       'src',
       'node_modules',
     ],
@@ -67,16 +62,10 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: [strip.loader('debug'), 'babel'],
+      loaders: [strip.loader('debug'), 'babel-loader'],
       exclude: /node_modules/,
     },
-    { test: /\.json$/, loader: 'json-loader' },
-    {
-      test: /\.less$/,
-      loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap=true&sourceMapContents=true') //eslint-disable-line
-    }, {
-      test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true') //eslint-disable-line
-    }],
+    { test: /\.json$/, loader: 'json-loader' }
+  ],
   },
 };
