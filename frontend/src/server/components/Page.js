@@ -20,7 +20,6 @@ export const Page = ({ data, markup = '', assets, head }) => {
   const analytics = isProduction && config.googleAnalyticsId !== 'UA-XXXXXXX-X' && (
     <script dangerouslySetInnerHTML={{ __html: analyticsSnippet(config) }} />
   );
-  console.log(assets.style)
   return (
     <html lang="en">
       <head>
